@@ -15,8 +15,11 @@ server.post('/api/users', async (req, res) => {
             });
         } else {
             const newUser = await Users.insert({name, bio});
+            console.log(newUser);
             res.status(201).json({
-                data: newUser
+                id: newUser.id,
+                name: newUser.name,
+                bio: newUser.bio
             });
         }
     } catch(err) {
